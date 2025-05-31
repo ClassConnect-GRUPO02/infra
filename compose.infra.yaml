@@ -40,16 +40,17 @@ services:
       options:
         max-size: 50m
 
-  # whoami:
-  #   image: traefik/whoami:latest
-  #   container_name: whoami
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.http.routers.whoami.rule=Host(`whoami.localhost`)
-  #     - traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)
-  #     - traefik.http.routers.whoami.entrypoints=web
-  #   networks:
-  #     - traefik-shared
+  datadog:
+    image: datadog/agent:latest
+    environment:
+     - DD_API_KEY=${DD_API_KEY}
+     - DD_SITE=us5.datadoghq.com
+    ports:
+     - 8126:8126/tcp
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
 
   jaeger:
     image: jaegertracing/all-in-one:1.56
