@@ -1,0 +1,10 @@
+project_id = "proud-will-455500-a6"
+region     = "us-central1"
+zone       = "us-central1-a"
+microservice_name = "user-service"
+vm_name = "pipeline-vm"
+vm_machine_type = "e2-micro"
+disk_size_gb = 16
+ssh_private_key_path = "~/.ssh/gcp-key"
+ssh_public_key_path = "~/.ssh/gcp-key.pub"
+allowed_ip_cidr       = "0.0.0.0/0"  # o tu IP pública por seguridad
